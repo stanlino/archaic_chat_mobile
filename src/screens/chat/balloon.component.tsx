@@ -87,13 +87,13 @@ function OwnerBalloon({ item, nextItem, previousItem, children }: OwnerBalloonPr
       renderLeftActions={!currentMessageIsFromCurrentUser ? RenderActions : undefined}
       onSwipeableOpen={(_, swipeable) => {
         if (swipeable) {
-          setCurrentReplyedMessage(item)
           swipeable.close()
         }
       }}
       hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
       onEnded={() => {
         Vibration.vibrate(50)
+        setCurrentReplyedMessage(item)
       }}
     >
       <UserMessage.Container
