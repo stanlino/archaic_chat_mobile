@@ -2,7 +2,9 @@ export declare global {
   namespace ReactNavigation {
     interface RootParamList {
       home: undefined
-      chat: undefined
+      chat: {
+        roomId: string
+      }
       rooms: undefined
     }
   }

@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "backgroundColor": "#141820"
     },
     "androidNavigationBar": {
       "backgroundColor": "#171717"

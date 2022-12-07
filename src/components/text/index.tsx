@@ -3,11 +3,7 @@ import React from 'react'
 import { TextContainer } from './styles'
 import { TextContainerProps } from './types'
 
-interface TextProps extends TextContainerProps {
-  children?: React.ReactNode
-}
-
-export function Text({ children, ...rest }: TextProps){
+export function Text({ children, ...rest }: TextContainerProps){
   return (
     <TextContainer {...rest}>
       {children}

@@ -11,7 +11,10 @@ export function Routes() {
   return (
     <NavigationContainer>
       <Navigator
-        screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
+        screenOptions={{ 
+          headerShown: false, 
+          animation: 'fade'
+        }}
       >
         <Screen name="home" component={HomeScreen} />
         <Screen name="rooms" component={RoomsScreen} />
