@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stanleyfilipe.archaic"
     },
     "android": {
       "adaptiveIcon": {
@@ -31,7 +32,7 @@
         "backgroundColor": "#141820"
       },
       "backgroundColor": "#141820",
-      "package": "com.stanleyfilipe.archaic_chat_mobile"
+      "package": "com.stanleyfilipe.archaic"
     },
     "androidNavigationBar": {
       "backgroundColor": "#171717"
