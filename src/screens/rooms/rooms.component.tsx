@@ -35,7 +35,7 @@ export function Rooms() {
   },[])
 
   const handleJoinRoom = useCallback((roomId: string) => {
-    navigation.navigate('chat', { roomId })
+    navigation.navigate('chat', { room: roomId })
   }, [])
 
   if (loading) return (

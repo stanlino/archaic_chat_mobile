@@ -19,12 +19,12 @@ export function RoomsScreen(){
 
   const [newRoomCode, setNewRoomCode] = useState('')
 
-  const handleCreateRoom = useCallback((roomId: string) => {
+  function handleCreateRoom() {
 
-    if (!roomId) return
+    if (!newRoomCode) return
 
-    navigation.navigate('chat', { roomId })
-  }, [])
+    navigation.navigate('chat', { room: newRoomCode })
+  }
 
   return (
     <Layout>
@@ -33,7 +33,7 @@ export function RoomsScreen(){
       </Container>
       <Footer>
         <Input onChangeText={setNewRoomCode} placeholder='Escreva o código da sala' autoCapitalize='none' />
-        <Button onPress={() => handleCreateRoom(newRoomCode)}>
+        <Button onPress={handleCreateRoom}>
           <Text>Criar sala</Text>
         </Button>
       </Footer>

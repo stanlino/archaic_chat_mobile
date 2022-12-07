@@ -3,7 +3,7 @@ export declare global {
     interface RootParamList {
       home: undefined
       chat: {
-        roomId: string
+        room: string
       }
       rooms: undefined
     }

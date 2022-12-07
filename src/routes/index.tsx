@@ -18,7 +18,17 @@ export function Routes() {
       >
         <Screen name="home" component={HomeScreen} />
         <Screen name="rooms" component={RoomsScreen} />
-        <Screen name="chat" component={ChatScreen} />
+        <Screen 
+          name="chat" 
+          component={ChatScreen} 
+          options={{ 
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#111827',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Navigator>
     </NavigationContainer>
   )
