@@ -106,13 +106,26 @@ export const Footer = {
     max-height: 160px;
     min-height: 50px;
   `,
-  ReplyedMessage: styled.View`
+  ReplyedContent: styled.View`
     width: 100%;
+    flex-direction: row;
     background-color: #ffff;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     padding: 8px;
   `,
+  ReplyedMessage: styled.View`
+    flex: 1;
+  `,
+  ReplyedMessageCloseButton: styled.TouchableOpacity`
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ea580c;
+    align-items: center;
+    justify-content: center;
+  `,
+  ReplyedMessageCloseIcon: styled(MaterialIcons)``,
   ReplyedMessageUsername: styled(Text)`
     font-size: 14px;
     text-align: left;

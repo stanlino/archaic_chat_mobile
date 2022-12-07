@@ -7,6 +7,7 @@ import { Message } from "../../@types/dtos/message"
 
 import { SystemMessage, UserMessage } from "./styles"
 import { useMessagesStore } from "../../store/messages"
+import { Vibration } from "react-native"
 
 interface BalloonProps {
   item: Message
@@ -86,9 +87,13 @@ function OwnerBalloon({ item, nextItem, previousItem, children }: OwnerBalloonPr
       renderLeftActions={!currentMessageIsFromCurrentUser ? RenderActions : undefined}
       onSwipeableOpen={(_, swipeable) => {
         if (swipeable) {
-          swipeable.close()
           setCurrentReplyedMessage(item)
+          swipeable.close()
         }
+      }}
+      hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+      onEnded={() => {
+        Vibration.vibrate(50)
       }}
     >
       <UserMessage.Container

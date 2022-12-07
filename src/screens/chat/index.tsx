@@ -47,6 +47,9 @@ export function ChatScreen(){
     flatlistRef.current?.scrollToIndex({index, animated: true})
   }, [flatlistRef, messages])
 
+  function scrollToEnd() {
+    flatlistRef.current?.scrollToEnd({ animated: false })
+  }
 
   useEffect(() => {
     setOptions({
@@ -65,8 +68,8 @@ export function ChatScreen(){
         <FlatList 
           ref={flatlistRef}
           style={{ marginBottom: 8 }}
-          onContentSizeChange={() => flatlistRef.current?.scrollToEnd({ animated: false })}
-          onLayout={() => flatlistRef.current?.scrollToEnd({ animated: false })}
+          onContentSizeChange={scrollToEnd}
+          onLayout={scrollToEnd}
           data={messages}
           keyExtractor={item => item.id}
           renderItem={({ item, index }) => 
@@ -83,14 +86,19 @@ export function ChatScreen(){
             <Footer.Connected>
               <Footer.Content>
                 {currentReplyedMessage && (
-                  <Footer.ReplyedMessage>
-                    <Footer.ReplyedMessageUsername style={{ color: currentReplyedMessage.color }}>
-                      {currentReplyedMessage.username}
-                    </Footer.ReplyedMessageUsername>
-                    <Footer.ReplyedMessageText>
-                      {currentReplyedMessage.message}
-                    </Footer.ReplyedMessageText>
-                  </Footer.ReplyedMessage>
+                  <Footer.ReplyedContent>
+                    <Footer.ReplyedMessage>
+                      <Footer.ReplyedMessageUsername style={{ color: currentReplyedMessage.color }}>
+                        {currentReplyedMessage.username}
+                      </Footer.ReplyedMessageUsername>
+                      <Footer.ReplyedMessageText>
+                        {currentReplyedMessage.message}
+                      </Footer.ReplyedMessageText>
+                    </Footer.ReplyedMessage>
+                    <Footer.ReplyedMessageCloseButton onPress={() => setCurrentReplyedMessage(null)}>
+                      <Footer.ReplyedMessageCloseIcon name='close' />
+                    </Footer.ReplyedMessageCloseButton>
+                  </Footer.ReplyedContent>
                 )}
                 <Footer.Input 
                   value={currentMessage} 
