@@ -32,7 +32,8 @@
         "backgroundColor": "#141820"
       },
       "backgroundColor": "#141820",
-      "package": "com.stanleyfilipe.archaic"
+      "package": "com.stanleyfilipe.archaic",
+      "versionCode": 2
     },
     "androidNavigationBar": {
       "backgroundColor": "#171717"
