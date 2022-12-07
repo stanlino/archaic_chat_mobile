@@ -30,7 +30,8 @@
         "resizeMode": "contain",
         "backgroundColor": "#141820"
       },
-      "backgroundColor": "#141820"
+      "backgroundColor": "#141820",
+      "package": "com.stanleyfilipe.archaic_chat_mobile"
     },
     "androidNavigationBar": {
       "backgroundColor": "#171717"
