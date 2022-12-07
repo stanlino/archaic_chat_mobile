@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "archaic_chat_mobile",
+    "name": "Archaic",
     "slug": "archaic_chat_mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#141820"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,13 +25,23 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#141820"
+      },
       "backgroundColor": "#141820"
     },
     "androidNavigationBar": {
       "backgroundColor": "#171717"
     },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#141820"
+    },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "jsEngine": "hermes"
   }
 }
