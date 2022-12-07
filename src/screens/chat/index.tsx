@@ -1,12 +1,15 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList } from 'react-native'
+
+import { Message } from '../../@types/dtos/message'
 
 import { Layout } from '../../components/layout'
 import { Text } from '../../components/text'
 
 import { useChat } from '../../hooks/useChat'
 import { useConnection } from '../../hooks/useConnection'
+import { useMessagesStore } from '../../store/messages'
 
 import { Balloon } from './balloon.component'
 
@@ -21,9 +24,11 @@ export function ChatScreen(){
   const { room } = params as any
 
   const [currentMessage, setCurrentMessage] = useState('')
+  const [inputHeight, setInputHeight] = useState(0)
 
   const { connected, socket } = useConnection(room)
   const { messages, sendMessage, users } = useChat(socket, room)
+  const [ currentReplyedMessage, setCurrentReplyedMessage ] = useMessagesStore(store => [store.currentReplyedMessage, store.setCurrentReplyedMessage]) 
 
   const flatlistRef = useRef<FlatList>(null)
 
@@ -33,7 +38,15 @@ export function ChatScreen(){
 
     sendMessage(currentMessage)
     setCurrentMessage('')
+    setInputHeight(0)
   }
+
+  const scrollToIndex = useCallback((message: Message) => {
+    const index = messages.findIndex(msg => msg.id === message.id)
+
+    flatlistRef.current?.scrollToIndex({index, animated: true})
+  }, [flatlistRef, messages])
+
 
   useEffect(() => {
     setOptions({
@@ -61,13 +74,38 @@ export function ChatScreen(){
               item={item}
               previousItem={messages[index - 1]}
               nextItem={messages[index + 1]}
+              scrollToIndex={scrollToIndex}
             />
           }
         />
         <Footer.Container>
           {connected ? (
             <Footer.Connected>
-              <Footer.Input value={currentMessage} onChangeText={setCurrentMessage} placeholder='Escreva uma mensagem' />
+              <Footer.Content>
+                {currentReplyedMessage && (
+                  <Footer.ReplyedMessage>
+                    <Footer.ReplyedMessageUsername style={{ color: currentReplyedMessage.color }}>
+                      {currentReplyedMessage.username}
+                    </Footer.ReplyedMessageUsername>
+                    <Footer.ReplyedMessageText>
+                      {currentReplyedMessage.message}
+                    </Footer.ReplyedMessageText>
+                  </Footer.ReplyedMessage>
+                )}
+                <Footer.Input 
+                  value={currentMessage} 
+                  onChangeText={setCurrentMessage} 
+                  placeholder={currentReplyedMessage ? 'Responder...' : 'Digite uma mensagem...'}
+                  onContentSizeChange={e => 
+                    setInputHeight(e.nativeEvent.contentSize.height)
+                  }
+                  style={{ 
+                    height: Math.max(50, inputHeight),
+                    borderTopLeftRadius: currentReplyedMessage ? 0 : 25,
+                    borderTopRightRadius: currentReplyedMessage ? 0 : 25,
+                  }}
+                />
+              </Footer.Content>
               <Footer.Button onPress={handleSendMessage}>
                 <Footer.Icon name='send' />
               </Footer.Button>

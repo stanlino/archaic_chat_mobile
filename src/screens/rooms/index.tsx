@@ -23,7 +23,7 @@ export function RoomsScreen(){
 
     if (!newRoomCode) return
 
-    navigation.navigate('chat', { room: newRoomCode })
+    navigation.navigate('chat', { room: newRoomCode.toLowerCase() })
   }
 
   return (
@@ -32,7 +32,7 @@ export function RoomsScreen(){
         <Rooms />
       </Container>
       <Footer>
-        <Input onChangeText={setNewRoomCode} placeholder='Escreva o código da sala' autoCapitalize='none' />
+        <Input onChangeText={setNewRoomCode} placeholder='Escreva o código da sala' autoCapitalize='none' style={{ marginBottom: 8 }} />
         <Button onPress={handleCreateRoom}>
           <Text>Criar sala</Text>
         </Button>

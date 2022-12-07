@@ -4,6 +4,7 @@ import {
   Poppins_700Bold 
 } from '@expo-google-fonts/poppins';
 import { StatusBar } from 'expo-status-bar';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { Routes } from './src/routes';
 
@@ -16,13 +17,14 @@ export default function App() {
 
   if (!fontsLoaded) return null;
 
-  return [
-    <StatusBar 
-      style="light" 
-      translucent={false} 
-      backgroundColor="#111827" 
-      key="status-bar" 
-    />,
-    <Routes key="routes" />
-  ]
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar 
+        style="light" 
+        translucent={false} 
+        backgroundColor="#111827" 
+      />
+      <Routes />
+    </GestureHandlerRootView>
+  )
 }

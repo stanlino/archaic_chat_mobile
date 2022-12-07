@@ -5,7 +5,6 @@ export const Container = styled.TextInput`
   height: 56px;
 
   padding: 0 16px;
-  margin-bottom: 8px;
 
   background-color: #fefefe;
   color: #29292e;
