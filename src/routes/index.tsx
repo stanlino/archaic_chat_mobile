@@ -10,10 +10,12 @@ const { Navigator, Screen } = createNativeStackNavigator()
 export function Routes() {
   return (
     <NavigationContainer>
-      <Navigator>
-        <Screen name="Home" component={HomeScreen} />
-        <Screen name="Rooms" component={RoomsScreen} />
-        <Screen name="Chat" component={ChatScreen} />
+      <Navigator
+        screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
+      >
+        <Screen name="home" component={HomeScreen} />
+        <Screen name="rooms" component={RoomsScreen} />
+        <Screen name="chat" component={ChatScreen} />
       </Navigator>
     </NavigationContainer>
   )
